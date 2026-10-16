@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zonas comerciales | Caso práctico de Power BI</title>
+  <style>
+    :root { --navy:#0C344E; --blue:#0D6B99; --cyan:#65C5D8; --yellow:#E9AF32; --pale:#EEF6F8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,Helvetica,sans-serif; color:#193746; background:#f6f9fa; line-height:1.5; }
+    header { background:var(--navy); color:#fff; padding:28px max(20px,calc((100% - 1000px)/2)); border-bottom:6px solid var(--cyan); }
+    header .eyebrow { color:#C3EAF0; text-transform:uppercase; letter-spacing:.12em; font-size:.78rem; font-weight:bold; }
+    h1 { margin:.4rem 0 .25rem; font-size:clamp(1.6rem,4vw,2.3rem); }
+    main { max-width:1000px; margin:28px auto; padding:0 20px 32px; }
+    .note { background:#fff; border-left:5px solid var(--yellow); padding:14px 18px; margin-bottom:20px; box-shadow:0 2px 8px #0c344e12; }
+    .table-wrap { overflow-x:auto; background:#fff; border:1px solid #d7e3e8; border-radius:8px; box-shadow:0 2px 8px #0c344e0d; }
+    table { width:100%; border-collapse:collapse; }
+    caption { text-align:left; padding:15px 16px; color:var(--navy); font-weight:bold; font-size:1.05rem; }
+    th { background:var(--blue); color:#fff; text-align:left; padding:12px 11px; font-size:.9rem; }
+    td { padding:12px 11px; border-bottom:1px solid #e5edf0; vertical-align:top; }
+    tbody tr:nth-child(even) { background:var(--pale); }
+    td:nth-child(3),td:nth-child(4),td:nth-child(5) { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+    footer { max-width:1000px; margin:auto; padding:0 20px 25px; color:#5a7180; font-size:.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Material didáctico · Power BI Desktop</div>
+    <h1>Datos de zonas comerciales</h1>
+    <div>Fuente de datos web para el caso hipotético de apertura de un restaurante</div>
+  </header>
+  <main>
+    <div class="note"><strong>Nota para el ejercicio:</strong> toda la información de esta página es ficticia y se creó exclusivamente para practicar la importación y el análisis de datos.</div>
+    <div class="table-wrap">
+      <table id="ZonasComerciales">
+        <caption>Indicadores de las ubicaciones candidatas</caption>
+        <thead>
+          <tr>
+            <th>IDZona</th>
+            <th>Zona</th>
+            <th>AlquilerMensualCRC</th>
+            <th>FlujoPeatonalDiario</th>
+            <th>CompetidoresRadio500m</th>
+            <th>PerfilComercial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Z01</td><td>Centro</td><td>820000</td><td>14500</td><td>12</td><td>Oficinas y comercio; alta exposición y competencia</td></tr><tr><td>Z02</td><td>Universitaria</td><td>560000</td><td>10800</td><td>7</td><td>Estudiantes y personal universitario; demanda entre semana</td></tr><tr><td>Z03</td><td>Residencial Norte</td><td>390000</td><td>6900</td><td>3</td><td>Familias y residentes; menor tránsito y menor competencia</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <footer>Conjunto de datos ficticio de uso educativo. Los importes se expresan en colones costarricenses (CRC).</footer>
+</body>
+</html>
