@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Directorio ficticio de sucursales para una práctica académica de Power BI.">
+  <title>McDonald's Costa Rica | Directorio de sucursales</title>
+  <style>
+    :root {
+      --mc-red: #DA291C;
+      --mc-red-dark: #B51F17;
+      --mc-yellow: #FFC72C;
+      --ink: #292929;
+      --muted: #686868;
+      --line: #e8e8e8;
+      --surface: #ffffff;
+      --page: #f6f6f6;
+      --green: #247a45;
+      --shadow: 0 12px 34px rgba(25, 25, 25, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    .top-strip { height: 7px; background: var(--mc-yellow); }
+    header {
+      background: var(--mc-red);
+      color: #fff;
+      box-shadow: 0 3px 14px rgba(0,0,0,.12);
+    }
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-mark {
+      width: 54px; height: 48px; flex: 0 0 54px;
+      display: grid; place-items: center;
+      color: var(--mc-yellow);
+      font-size: 52px; line-height: .8; font-weight: 900;
+      font-family: Arial Black, Arial, sans-serif;
+      letter-spacing: -7px;
+      padding-right: 6px;
+    }
+    .brand-name { font-size: 18px; font-weight: 800; letter-spacing: -.3px; }
+    .brand-sub { display: block; margin-top: 2px; font-size: 11px; font-weight: 600; opacity: .88; letter-spacing: 1.4px; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 25px; }
+    nav a { color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; }
+    nav a:hover { color: var(--mc-yellow); }
+    .hero {
+      background: var(--mc-red);
+      color: white;
+      padding: 46px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 390px; height: 390px;
+      border: 58px solid rgba(255,199,44,.12); border-radius: 50%;
+      right: -115px; top: -230px; pointer-events: none;
+    }
+    .hero-inner { max-width: 1128px; margin: 0 auto; position: relative; z-index: 1; }
+    .eyebrow { color: var(--mc-yellow); font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    h1 { max-width: 720px; margin: 0; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; letter-spacing: -1.5px; }
+    .hero p { max-width: 650px; margin: 16px 0 0; color: rgba(255,255,255,.92); font-size: 16px; line-height: 1.65; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; margin-top: 23px; padding: 8px 13px; border-radius: 30px; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.24); font-size: 12px; font-weight: 700; }
+    main { max-width: 1128px; margin: -31px auto 0; padding: 0 24px 44px; position: relative; z-index: 2; }
+    .notice {
+      background: #fff8e5; border: 1px solid #f2d88b; border-left: 5px solid var(--mc-yellow);
+      border-radius: 10px; padding: 15px 18px; margin-bottom: 22px;
+      color: #4f452b; font-size: 13px; line-height: 1.6;
+    }
+    .notice strong { color: #332b19; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 23px; }
+    .stat {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      padding: 17px 19px; box-shadow: var(--shadow); min-height: 94px;
+    }
+    .stat-value { font-size: 26px; font-weight: 900; color: var(--mc-red); line-height: 1.1; }
+    .stat-label { color: var(--muted); font-size: 12px; margin-top: 6px; font-weight: 700; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
+    .panel-head { padding: 22px 24px 17px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
+    .panel-head h2 { font-size: 21px; margin: 0 0 5px; letter-spacing: -.4px; }
+    .panel-head p { margin: 0; color: var(--muted); font-size: 13px; }
+    .source-pill { background: #fff0ef; color: var(--mc-red-dark); border-radius: 30px; padding: 7px 11px; white-space: nowrap; font-size: 11px; font-weight: 800; }
+    .table-wrap { overflow-x: auto; padding: 0 14px 12px; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; }
+    thead th {
+      background: #2b2b2b; color: #fff; text-align: left; padding: 13px 11px;
+      white-space: nowrap; font-size: 10px; letter-spacing: .55px; text-transform: uppercase;
+    }
+    thead th:first-child { border-radius: 7px 0 0 0; }
+    thead th:last-child { border-radius: 0 7px 0 0; }
+    tbody td { padding: 13px 11px; border-bottom: 1px solid #ededed; white-space: nowrap; }
+    tbody tr:nth-child(even) { background: #fafafa; }
+    tbody tr:hover { background: #fff8e5; }
+    tbody td:nth-child(1) { color: var(--mc-red); font-weight: 800; }
+    tbody td:nth-child(2) { font-weight: 700; }
+    tbody td:nth-child(7) { font-variant-numeric: tabular-nums; }
+    .table-note { padding: 0 24px 20px; color: var(--muted); font-size: 11px; }
+    footer { background: #242424; color: #c9c9c9; padding: 25px 24px; }
+    .footer-inner { max-width: 1128px; margin: 0 auto; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11px; }
+    .footer-inner strong { color: #fff; }
+    .footer-accent { color: var(--mc-yellow); font-weight: 800; }
+    @media (max-width: 700px) {
+      .header-inner { padding: 15px 18px; }
+      nav { display: none; }
+      .hero { padding: 38px 19px 62px; }
+      main { padding-left: 14px; padding-right: 14px; }
+      .stats { gap: 8px; }
+      .stat { padding: 13px 11px; min-height: 82px; }
+      .stat-value { font-size: 21px; }
+      .stat-label { font-size: 10px; }
+      .panel-head { padding: 18px 17px 14px; }
+      .source-pill { display: none; }
+    }
+    @media print {
+      body { background: #fff; }
+      .top-strip { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      header, .hero, .panel-head, thead th, footer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .hero { padding: 28px 20px 42px; }
+      main { margin-top: -18px; }
+      .stat, .panel { box-shadow: none; }
+      .notice { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip"></div>
+  <header>
+    <div class="header-inner">
+      <div class="brand" aria-label="McDonald's Costa Rica, simulación académica">
+        <div class="brand-mark" aria-hidden="true">M</div>
+        <div>
+          <div class="brand-name">McDonald's Costa Rica</div>
+          <span class="brand-sub">Directorio de sucursales · Caso 2026</span>
+        </div>
+      </div>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#sucursales">Sucursales</a>
+        <a href="#fuente">Datos de práctica</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="eyebrow">Nuestro directorio</div>
+      <h1>Estamos más cerca de vos.</h1>
+      <p>Consultá la información de las sucursales incluidas en el caso de análisis de desempeño 2026. Esta fuente permite complementar los registros de ventas con características de cada ubicación.</p>
+      <div class="hero-tag"><span class="footer-accent">●</span> Información de sucursales para el ejercicio de Power BI</div>
+    </div>
+  </section>
+
+  <main id="fuente">
+    <div class="notice">
+      <strong>Simulación académica:</strong> esta página fue creada exclusivamente para una actividad educativa de Power BI. Los datos, nombres de sucursales, alquileres, competidores y coordenadas son ficticios o referenciales. No es un sitio oficial de McDonald’s ni representa un directorio real de restaurantes.
+    </div>
+
+    <section class="stats" aria-label="Resumen del conjunto de datos">
+      <div class="stat"><div class="stat-value">8</div><div class="stat-label">Sucursales en el conjunto de datos</div></div>
+      <div class="stat"><div class="stat-value">7</div><div class="stat-label">Provincias representadas</div></div>
+      <div class="stat"><div class="stat-value">4</div><div class="stat-label">Regiones representadas</div></div>
+    </section>
+
+    <section class="panel" id="sucursales">
+      <div class="panel-head">
+        <div>
+          <h2>Encontrá nuestras sucursales</h2>
+          <p>Información de referencia para relacionar con las ventas trimestrales.</p>
+        </div>
+        <span class="source-pill">TABLA: SUCURSALES</span>
+      </div>
+      <div class="table-wrap">
+        <!-- Mantener el ID y los encabezados: Power BI utilizará esta tabla como fuente web. -->
+        <table id="Sucursales">
+          <thead>
+            <tr>
+              <th>ID_Sucursal</th>
+              <th>Sucursal</th>
+              <th>Provincia</th>
+              <th>Canton</th>
+              <th>Region</th>
+              <th>Tipo_Zona</th>
+              <th>Alquiler_Mensual</th>
+              <th>Competidores</th>
+              <th>Latitud</th>
+              <th>Longitud</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>SJ-01</td><td>San José Centro</td><td>San José</td><td>San José</td><td>Central</td><td>Comercial</td><td>3200000</td><td>8</td><td>9.9325</td><td>-84.0796</td></tr>
+            <tr><td>SJ-02</td><td>Escazú</td><td>San José</td><td>Escazú</td><td>Central</td><td>Comercial-residencial</td><td>4100000</td><td>6</td><td>9.9187</td><td>-84.1395</td></tr>
+            <tr><td>AL-01</td><td>Alajuela Centro</td><td>Alajuela</td><td>Alajuela</td><td>Central</td><td>Comercial</td><td>2650000</td><td>5</td><td>10.0162</td><td>-84.2116</td></tr>
+            <tr><td>HE-01</td><td>Heredia Centro</td><td>Heredia</td><td>Heredia</td><td>Central</td><td>Comercial</td><td>2800000</td><td>5</td><td>10.0024</td><td>-84.1165</td></tr>
+            <tr><td>CA-01</td><td>Cartago Centro</td><td>Cartago</td><td>Cartago</td><td>Central</td><td>Comercial</td><td>2300000</td><td>4</td><td>9.8644</td><td>-83.9194</td></tr>
+            <tr><td>GU-01</td><td>Liberia</td><td>Guanacaste</td><td>Liberia</td><td>Chorotega</td><td>Comercial-turística</td><td>2450000</td><td>3</td><td>10.6346</td><td>-85.4407</td></tr>
+            <tr><td>LI-01</td><td>Limón Centro</td><td>Limón</td><td>Limón</td><td>Huetar Caribe</td><td>Comercial</td><td>2150000</td><td>3</td><td>9.9907</td><td>-83.0359</td></tr>
+            <tr><td>PU-01</td><td>Puntarenas Centro</td><td>Puntarenas</td><td>Puntarenas</td><td>Pacífico Central</td><td>Comercial-turística</td><td>2100000</td><td>2</td><td>9.9763</td><td>-84.8384</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-note">El campo <strong>ID_Sucursal</strong> permite relacionar esta tabla con los registros de ventas de Q1, Q2, Q3 y Q4 de 2026.</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>McDonald's Costa Rica</strong> <span class="footer-accent">|</span> Directorio simulado para uso educativo</div>
+      <div>Moneda: colones costarricenses (CRC) · Coordenadas cantonales aproximadas</div>
+    </div>
+  </footer>
+</body>
+</html>
